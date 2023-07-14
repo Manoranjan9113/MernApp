@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 mongoose
-  .connect("mongodb://localhost:27017/todo-app", {
+  .connect("mongodb://0.0.0.0:27017/todo-app", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
