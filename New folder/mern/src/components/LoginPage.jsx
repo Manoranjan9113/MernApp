@@ -23,7 +23,7 @@ const LoginPage = () => {
     //   setError(err.message);
     // }
   
-    Axios.post('http://localhost:3001/checkUser', userdetails)
+    Axios.post('http://0.0.0.0:3001/checkUser', userdetails)
       .then(response => {
         console.log(response.data);
         toast.success("WELCOME TO OUR EMPIRE");
@@ -42,7 +42,7 @@ const LoginPage = () => {
         }else if(err.response.data.message === "Incorrect Password...!"){
           toast.error("Incorrect Password...!");
         }else {
-          toast.error("User Not Found!, Please Sign In");
+          toast.error("User Not Found!, Palease Sign In");
         } 
         setUsername("");
         setPassword("");
