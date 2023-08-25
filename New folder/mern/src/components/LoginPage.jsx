@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
  import { toast } from 'react-toastify';
+import config from '../config.json';
 
 // import { useUserAuth } from '../context/userAuthContext'
 
@@ -23,7 +24,7 @@ const LoginPage = () => {
     //   setError(err.message);
     // }
   
-    Axios.post('https://mernappbackendwebservice.onrender.com/checkUser', userdetails)
+    Axios.post('${config.backendUrl}/checkUser', userdetails)
       .then(response => {
         console.log(response.data);
         toast.success("WELCOME TO OUR EMPIRE");
