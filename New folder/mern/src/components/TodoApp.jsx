@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import Axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import config from '../config.json';
 
 function TodoApp() {
   const [users, setUsers] = useState([]);
@@ -18,7 +19,7 @@ function TodoApp() {
   const navigate = useNavigate();
 
   const getUsers = () => {
-    Axios.get("http://localhost:3001/getUsers")
+    Axios.get("${config.backendUrl}/getUsers")
       .then((response) => {
         setLu(response.data);
       })
@@ -45,7 +46,7 @@ function TodoApp() {
   
     formData.append("authKey", authKey);
   
-    Axios.post("http://localhost:3001/createUser", formData)
+    Axios.post("${config.backendUrl}/createUser", formData)
       .then((response) => {
         const newUser = response.data;
         setUsers([...users, newUser]);
@@ -86,7 +87,7 @@ const saveEditedUser = () => {
   formData.append("image", selectedImage);
   formData.append("authKey", authKey);
 
-  Axios.put(`http://localhost:3001/editUser/${editUserId}`, formData)
+  Axios.put(`${config.backendUrl}/${editUserId}`, formData)
     .then(() => {
       setEditUserId("");
       setNewName("");
@@ -106,7 +107,7 @@ const saveEditedUser = () => {
     delUser.append("authKey", authKey);
 
     console.log(authKey)
-    Axios.delete(`http://localhost:3001/deleteUser/${userId}`, delUser)
+    Axios.delete(`${config.backendUrl}/deleteUser/${userId}`, delUser)
       .then(() => {
         setLu((prevUsers) => prevUsers.filter((user) => user._id !== userId));
       })
@@ -116,7 +117,7 @@ const saveEditedUser = () => {
   };
 
   const duplicateUser = (userId) => {
-    Axios.post(`http://localhost:3001/duplicateUser/${userId}`)
+    Axios.post(`${config.backendUrl}/duplicateUser/${userId}`)
       .then(() => {
         getUsers();
       })
