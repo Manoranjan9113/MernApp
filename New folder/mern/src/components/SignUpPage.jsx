@@ -3,6 +3,7 @@ import "../App.css"
 import Axios  from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import config from '../config.json';
 
 // import { useUserAuth } from '../context/userAuthContext';
 
@@ -30,7 +31,7 @@ const SignUpPage = () => {
       password: password,
     };
 
-    Axios.post('http://localhost:3001/createSign', newSignInuser) // Use axios.post instead of Axios.post
+    Axios.post('${config.backendUrl}/createSign', newSignInuser) // Use axios.post instead of Axios.post
       .then((response) => {
         console.log(response.data); // Log the response data to the console
         setUsername("");
