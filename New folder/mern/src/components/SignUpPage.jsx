@@ -31,7 +31,7 @@ const SignUpPage = () => {
       password: password,
     };
 
-    Axios.post('${config.backendUrl}/createSign', newSignInuser) // Use axios.post instead of Axios.post
+    Axios.post(`${config.backendUrl}/createSign`, newSignInuser) // Use axios.post instead of Axios.post
       .then((response) => {
         console.log(response.data); // Log the response data to the console
         setUsername("");
