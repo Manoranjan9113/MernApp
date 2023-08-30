@@ -19,7 +19,7 @@ function TodoApp() {
   const navigate = useNavigate();
 
   const getUsers = () => {
-    Axios.get("${config.backendUrl}/getUsers")
+    Axios.get(`${config.backendUrl}/getUsers`)
       .then((response) => {
         setLu(response.data);
       })
@@ -46,7 +46,7 @@ function TodoApp() {
   
     formData.append("authKey", authKey);
   
-    Axios.post("${config.backendUrl}/createUser", formData)
+    Axios.post(`${config.backendUrl}/createUser`, formData)
       .then((response) => {
         const newUser = response.data;
         setUsers([...users, newUser]);
