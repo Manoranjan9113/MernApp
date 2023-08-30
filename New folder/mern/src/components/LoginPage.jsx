@@ -43,7 +43,7 @@ const LoginPage = () => {
         }else if(err.response.data.message === "Incorrect Password...!"){
           toast.error("Incorrect Password...!");
         }else {
-          toast.error("User Not Found!, Palease Sign In");
+          toast.error("User Not Found!, Please Sign In");
         } 
         setUsername("");
         setPassword("");
