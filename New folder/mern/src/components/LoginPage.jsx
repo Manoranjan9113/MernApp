@@ -24,7 +24,7 @@ const LoginPage = () => {
     //   setError(err.message);
     // }
   
-    Axios.post('${config.backendUrl}/checkUser', userdetails)
+    Axios.post(`${config.backendUrl}/checkUser`, userdetails)
       .then(response => {
         console.log(response.data);
         toast.success("WELCOME TO OUR EMPIRE");
